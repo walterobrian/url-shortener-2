@@ -13,7 +13,7 @@ export default async ({ res, req, log, error }) => {
 
   if (
     req.method === 'POST' &&
-    req.headers['content-type'] === 'application/json'
+    // req.headers['content-type'] === 'application/json'
   ) {
     try {
       throwIfMissing(req.body, ['url']);
