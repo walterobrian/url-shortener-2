@@ -1,5 +1,6 @@
 import AppwriteService from './appwrite.js';
 import { generateShortCode } from './utils.js';
+import querystring from 'node:querystring';
 
 export default async ({ res, req, log, error }) => {
   // throwIfMissing(process.env, [
@@ -18,7 +19,14 @@ export default async ({ res, req, log, error }) => {
   ) {
     try {
       // throwIfMissing(req.body, ['url']);
+      const formData = querystring.parse(req.body);
+
+    const message = {
+      url: formData.url,
+      shortCode: formData.shortCode,
+    };
       new URL(req.body.url);
+      context.log(req.body)
     } catch (err) {
       error(err.message);
       return res.send({ ok: false, error: `${err.message} "yabadabadooo"` }, 400);
