@@ -1,19 +1,20 @@
 import AppwriteService from './appwrite.js';
-import { generateShortCode, throwIfMissing } from './utils.js';
+import { generateShortCode } from './utils.js';
 
 export default async ({ res, req, log, error }) => {
-  throwIfMissing(process.env, [
-    'APPWRITE_API_KEY',
-    'APPWRITE_DATABASE_ID',
-    'APPWRITE_COLLECTION_ID',
-    'SHORT_BASE_URL',
-  ]);
+  // throwIfMissing(process.env, [
+  //   'APPWRITE_API_KEY',
+  //   'APPWRITE_DATABASE_ID',
+  //   'APPWRITE_COLLECTION_ID',
+  //   'SHORT_BASE_URL',
+  // ]);
 
   const appwrite = new AppwriteService();
 
   if (
-    req.method === 'POST' &&
-    req.headers['content-type'] === 'application/json'
+    req.method === 'POST' 
+    // &&
+    // req.headers['content-type'] === 'application/json'
   ) {
     try {
       throwIfMissing(req.body, ['url']);
@@ -33,7 +34,7 @@ export default async ({ res, req, log, error }) => {
     }
 
     return res.json({
-      short: new URL(urlEntry.$id, process.env.SHORT_BASE_URL).toString(),
+      short: new URL(urlEntry.$id, "https://short.app/").toString(),
     });
   }
 
