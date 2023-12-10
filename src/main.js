@@ -17,7 +17,7 @@ export default async ({ res, req, log, error }) => {
     // req.headers['content-type'] === 'application/json'
   ) {
     try {
-      throwIfMissing(req.body, ['url']);
+      // throwIfMissing(req.body, ['url']);
       new URL(req.body.url);
     } catch (err) {
       error(err.message);
