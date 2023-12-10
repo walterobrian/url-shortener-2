@@ -19,7 +19,7 @@ export default async ({ res, req, log, error }) => {
   ) {
     try {
       // throwIfMissing(req.body, ['url']);
-       const formData = JSON.parse(req.data);
+       const formData = JSON.parse(req.body);
 
      const message = {
        url: formData.url,
