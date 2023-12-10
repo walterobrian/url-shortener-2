@@ -14,8 +14,8 @@ class AppwriteService {
       .setEndpoint(
         process.env.APPWRITE_ENDPOINT ?? 'https://cloud.appwrite.io/v1'
       )
-      .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-      .setKey(process.env.APPWRITE_API_KEY);
+      .setProject("656e2c43a574f664ebd8")
+      .setKey("b4b185ddcb3094dcb2733d589b1deb8b136dc982ef7084cf274ead3a17dd726e458a7c11075d4f43056cfeab9556788ff1702c0f3fe6ca87592bbeb8792ee159a29dc381aa8ea6d97d71f0815c62c7048a9ef524dc0755319317b3964414aa40adfb8d160e0859ed593a30f9cfa5559e41fc28379399f676d5f347950383e3c8");
 
     this.databases = new Databases(client);
   }
@@ -28,8 +28,8 @@ class AppwriteService {
     try {
       const document = /** @type {URLEntryDocument} */ (
         await this.databases.getDocument(
-          process.env.APPWRITE_DATABASE_ID,
-          process.env.APPWRITE_COLLECTION_ID,
+          "656e2d6d5ee9c0a6c953",
+          "656e2f4485d720af38f2",
           shortCode
         )
       );
@@ -50,8 +50,8 @@ class AppwriteService {
     try {
       const document = /** @type {URLEntryDocument} */ (
         await this.databases.createDocument(
-          process.env.APPWRITE_DATABASE_ID,
-          process.env.APPWRITE_COLLECTION_ID,
+          "656e2d6d5ee9c0a6c953",
+          "656e2f4485d720af38f2",
           shortCode,
           {
             url,
@@ -71,7 +71,7 @@ class AppwriteService {
    */
   async doesURLEntryDatabaseExist() {
     try {
-      await this.databases.get(process.env.APPWRITE_DATABASE_ID);
+      await this.databases.get("656e2d6d5ee9c0a6c953");
       return true;
     } catch (err) {
       if (err.code !== 404) throw err;
@@ -82,7 +82,7 @@ class AppwriteService {
   async setupURLEntryDatabase() {
     try {
       await this.databases.create(
-        process.env.APPWRITE_DATABASE_ID,
+        "656e2d6d5ee9c0a6c953",
         'URL Shortener'
       );
     } catch (err) {
@@ -91,8 +91,8 @@ class AppwriteService {
     }
     try {
       await this.databases.createCollection(
-        process.env.APPWRITE_DATABASE_ID,
-        process.env.APPWRITE_COLLECTION_ID,
+        "656e2d6d5ee9c0a6c953",
+        "656e2f4485d720af38f2",
         'URLs'
       );
     } catch (err) {
@@ -100,8 +100,8 @@ class AppwriteService {
     }
     try {
       await this.databases.createUrlAttribute(
-        process.env.APPWRITE_DATABASE_ID,
-        process.env.APPWRITE_COLLECTION_ID,
+        "656e2d6d5ee9c0a6c953",
+        "656e2f4485d720af38f2",
         'url',
         true
       );
