@@ -19,7 +19,7 @@ export default async ({ res, req, log, error }) => {
   ) {
     try {
       // throwIfMissing(req.body, ['url']);
-       const formData = JSON.parse(req.body);
+       const formData = JSON.parse(req.data);
 
      const message = {
        url: formData.url,
@@ -28,6 +28,7 @@ export default async ({ res, req, log, error }) => {
       new URL(message.url)
       // context.log(message)
       // context.log(formData)
+      res.send({ ok: true, error: message.url }, 200);
     } catch (err) {
       error(err.message);
       return res.send({ ok: false, error: `${err.message} "yabadabadooo"` }, 400);
