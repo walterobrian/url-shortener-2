@@ -21,7 +21,7 @@ export default async ({ res, req, log, error }) => {
       new URL(req.body.url);
     } catch (err) {
       error(err.message);
-      return res.send({ ok: false, error: err.message }, 400);
+      return res.send({ ok: false, error: `${err.message} "yabadabadooo"` }, 400);
     }
 
     const urlEntry = await appwrite.createURLEntry(
