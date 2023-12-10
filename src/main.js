@@ -28,7 +28,7 @@ export default async ({ res, req, log, error }) => {
       new URL(message.url)
       // context.log(message)
       // context.log(formData)
-      return res.send({ ok: true, error: message.url }, 200);
+      // return res.send({ ok: true, error: message.url }, 200);
     } catch (err) {
       error(err.message);
       return res.send({ ok: false, error: `${err.message} "yabadabadooo"` }, 400);
