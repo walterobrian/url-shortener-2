@@ -26,8 +26,8 @@ export default async ({ res, req, log, error }) => {
        shortCode: formData.shortCode,
      }
       new URL(message.url)
-      context.log(message)
-      context.log(formData)
+      // context.log(message)
+      // context.log(formData)
     } catch (err) {
       error(err.message);
       return res.send({ ok: false, error: `${err.message} "yabadabadooo"` }, 400);
